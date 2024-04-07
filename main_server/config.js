@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const path = require("path");
 // routers :
-const router = require("./routes/authRoutes.js");
+const AuthRouter = require("./routes/authRoutes.js");
+const MySpaceRouter = require("./routes/mySpaceRoutes.js");
 const connectDb = (uri) => {
   mongoose
     .connect(uri)
@@ -13,13 +15,19 @@ const connectDb = (uri) => {
     });
 };
 const setupApp = (app) => {
+  // app.use(express.static(path.join(__dirname, "views")));
+  app.use(express.static("views"));
   app.use(express.urlencoded({ extended: false }));
 };
 const setupRoutes = (app) => {
   app.get("/", (req, res) => {
     res.render("index", { name: "mehdi" });
   });
-  app.use("/auth", router);
+  app.use("/auth", AuthRouter);
+  app.use("/mySpace", MySpaceRouter);
+  app.get("*", (req, res) => {
+    res.render("notFoundPage/notFound.ejs");
+  });
 };
 module.exports = {
   connectDb,
