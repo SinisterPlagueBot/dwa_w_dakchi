@@ -62,13 +62,31 @@
   border-radius: 0.5rem;
 
   /* Specify transition for background-image */
-  transition: background-image 1s ease-in;
+  /* transition: all 1s ease-in; */
+  position: relative;
+  z-index: 10;
+}
+
+.menu-item::after {
+  content: " ";
+  background-image: linear-gradient(to left, #86d58d, #379274);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  transition: all 0.2s ease-in;
+  z-index: -1;
 }
 
 .menu-item:hover {
-  background-image: linear-gradient(to left, #86d58c, #379273);
   color: white;
 }
+
+.menu-item:hover::after {
+  width: 100%;
+}
+
 .hidden-nav {
   position: absolute;
   top: 0;
@@ -78,7 +96,7 @@
   height: 3rem;
   width: 3rem;
   transform: rotate(-180deg);
-  background-image: linear-gradient(to left, #86d58c, #379273);
+  /* background-image: linear-gradient(to left, #86d58c, #379273); */
   transition: transform 0.3s ease-in;
 }
 .hidden-nav:hover {
