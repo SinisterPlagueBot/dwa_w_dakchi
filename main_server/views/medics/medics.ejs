@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/navbar/navbar.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/medics/medics.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medication Information</title>
+  </head>
+  <body>
+    <%- include('../navbar/navbar.ejs') %>
+
+    <!-- Add a search bar -->
+    <div class="container">
+      <form id="searchform" action="/medics" method="post">
+        <input
+          id="search"
+          type="text"
+          name="search"
+          placeholder="Search..."
+          required
+        />
+        <button id="searchButton" type="submit">Search</button>
+              <button id="showall"> show all</button>
+<script>
+$(document).ready(function(){
+  $("#showall").click(function(){
+    event.preventDefault();
+    window.location.href = "/medics";
+  });
+});
+</script>
+      </form>
+
+      <div class="medics">
+      <div class="medics-container">
+        <% if (results) { var resultsArray = Array.isArray(results) ? results :
+        [results]; resultsArray.forEach(function(result) { %> <%-
+        include('medicCard.ejs', { data: result.data, imageUrl: result.imageUrl
+        }) %> <% }); %> <% } else { %>
+
+        <p>No data available</p>
+        <% } %>
+      </div>
+      </div>
+    
+  </body>
+</html>

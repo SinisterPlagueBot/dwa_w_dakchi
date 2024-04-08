@@ -1,10 +1,14 @@
 .navbar-container {
   background-color: white;
-  width: 15rem;
-  height: 100vh;
+  width: 20rem;
+  min-width: 20rem;
+
+  min-height: calc(100vh - 1px);
   font-size: 22px;
   display: block;
   border: 1px solid #86d58c;
+  border-bottom: none;
+  flex: 1 1 auto;
 }
 .nav-hidden {
   display: none !important;
@@ -68,7 +72,8 @@
 }
 
 .menu-item::after {
-  content: " ";
+  content: "";
+  border-radius: 0.4rem;
   background-image: linear-gradient(to left, #86d58d, #379274);
   position: absolute;
   top: 0;
@@ -96,7 +101,7 @@
   height: 3rem;
   width: 3rem;
   transform: rotate(-180deg);
-  /* background-image: linear-gradient(to left, #86d58c, #379273); */
+  background-image: linear-gradient(to left, #86d58c, #379273);
   transition: transform 0.3s ease-in;
 }
 .hidden-nav:hover {

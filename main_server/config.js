@@ -4,6 +4,7 @@ const path = require("path");
 // routers :
 const AuthRouter = require("./routes/authRoutes.js");
 const MySpaceRouter = require("./routes/mySpaceRoutes.js");
+const MedicsRouter = require("./routes/medicsRoutes.js");
 const connectDb = (uri) => {
   mongoose
     .connect(uri)
@@ -24,6 +25,7 @@ const setupRoutes = (app) => {
     res.render("index", { name: "mehdi" });
   });
   app.use("/auth", AuthRouter);
+  app.use("/medics", MedicsRouter);
   app.use("/mySpace", MySpaceRouter);
   app.get("*", (req, res) => {
     res.render("notFoundPage/notFound.ejs");

@@ -1,0 +1,78 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  margin: 0;
+  min-width: 100vw;
+  height: 100%;
+}
+#searchform {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  padding: 7rem;
+}
+
+#search {
+  height: 2rem;
+  width: 20rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+#searchButton,
+#showall {
+  background-color: #1ca545;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#searchButton:hover,
+#showall:hover {
+  background-color: #6dc474;
+}
+.medics-container {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 2rem;
+  width: 100%;
+  min-width: calc(100vw - 22.5rem);
+}
+
+.medics-container > * {
+  flex-basis: 28%;
+}
+.medication-info {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 20rem;
+
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.medication-info img {
+  margin: 10px;
+  height: 5rem;
+  width: 5rem;
+}
+.medics {
+  background-color: #1ca545;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  width: 100%;
+}

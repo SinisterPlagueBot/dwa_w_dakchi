@@ -1,0 +1,52 @@
+<!-- medicationInfo.ejs -->
+
+<style>
+  /* Add CSS styles for the component */
+  .medication-info {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    height: fit-content;
+    width: fit-content;
+  }
+  .medication-info img {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+  .medication-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .medication-info li {
+    margin-bottom: 10px;
+  }
+  .medication-info strong {
+    font-weight: bold;
+  }
+</style>
+
+<div class="medication-info">
+  <strong>Generic Name:</strong> <%= data.generic_name %><br />
+  <img src="<%= imageUrl %>" alt="Medication Image" />
+  <ul>
+    <li>
+      <strong>Labeler Name:</strong> <%= data.labeler_name %><br />
+      <strong>Brand Name:</strong> <%= data.brand_name %><br />
+
+      <% if (data.packaging) { %>
+      <ul>
+        <% data.packaging.forEach(function(package) { %>
+        <li><strong>Description:</strong> <%= package.description %><br /></li>
+        <% }); %>
+      </ul>
+      <% } %>
+
+      <!-- Add more fields as needed -->
+    </li>
+  </ul>
+</div>
