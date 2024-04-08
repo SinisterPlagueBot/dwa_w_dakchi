@@ -1,25 +1,78 @@
-<!-- signup.ejs -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="/signup/signup.css" />
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
+    <link rel="stylesheet" href="/signup/styles/css/signup.css" />
+    <title>MEDICS</title>
   </head>
   <body>
-    <form action="/auth/signup" method="post">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required />
-      <br />
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
-      <br />
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-      <br />
-      <button type="submit">Sign Up</button>
-    </form>
+    <main>
+      <div class="container">
+        <div class="inner-container">
+          <div class="decoration">
+            <div class="image">
+              <img
+                src="/signup/assets/images/logo_pharmacie-removebg-preview.png"
+              />
+            </div>
+            <diV class="text">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                eu lacinia ante. Sed at felis sed ante suscipit faucibus in
+                vitae lacus.
+              </p>
+            </diV>
+          </div>
+          <div class="form_wrapper">
+            <form action="/auth/signup" method="post">
+              <div class="logo">
+                <img src="" />
+                <h2>MEDICS</h2>
+              </div>
+              <div class="title">
+                <h1>Hello, Again</h1>
+                <h6>
+                  Not registered, yet ?
+                  <a href="/auth/signin" class="toggle">Register now</a>
+                </h6>
+              </div>
+              <div class="actual_form">
+                <div class="input_wrap">
+                  <input
+                    class="input_field"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="email"
+                    required
+                  />
+                </div>
+                <br />
+                <div class="input_wrap">
+                  <input
+                    class="input_field"
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="password"
+                    required
+                  />
+                </div>
+                <br />
+                <input type="submit" value="Sign In" class="sign-btn" />
+                <div class="foot">
+                  <p>
+                    Forgot your password ?
+                    <a href="#" class="toggle">Get help</a>
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./JS/signup.js"></script>
   </body>
 </html>
