@@ -13,15 +13,14 @@ const getAllClients = async (query = {}) => {
     }
 }
 
-const addClient = async (username,email,password) => {
+const addClient = async (email,password) => {
      // Check if a user with the same username or email already exists
-     const existingUser = await Client.findOne({ $or: [{ username }, { email }] });
+     const existingUser = await Client.findOne({"email":email});
 
      if (existingUser) {
          throw new Error('Username or email already exists');
      }
     const newClient = new Client({
-        "username": username,
         "password":password,
         "email": email
         });

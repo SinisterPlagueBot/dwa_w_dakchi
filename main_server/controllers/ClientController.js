@@ -1,23 +1,31 @@
 const clientServices = require("../services/clientServices");
+const bcrypt = require("bcrypt");
 
 const getUsers = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const {email, password} = req.body;
 
         // Fetch all clients (users) from the database
         const users = await clientServices.getAllClients();
 
         // Check if any user matches the provided credentials
-        const authorizedUser = users.find(user => {
-            return user.username === username && user.email === email && user.password === password;
-        });
 
-        if (authorizedUser) {
-            // User authenticated successfully
-            res.status(200).render("index",{name : username});
-        } else {
-            // Unauthorized: Incorrect credentials
-            res.status(401).json({ error: "Invalid credentials" });
+        const authorizedUser = false;
+        
+        for(i = 0 ; i < users.length ;i++){
+            if(users[i].email === email){
+                bcrypt.compare(password,users[i].password,(err,result) => {
+                    if(err){
+                        res.status(500).json({error:"Something went wrong !"});
+                    }
+                    if(result){
+                        res.status(200).render("index",{name:email});
+                    }
+                    else{
+                        res.status(500).json({error:"Mot de passe incorrect."})
+                    }
+                })
+            }
         }
     } catch (err) {
         console.error("Error in getUsers:", err);
@@ -28,7 +36,7 @@ const getUsers = async (req, res) => {
 const registerUser = async (req,res) => {
     try{
         let authorized = true;
-        let {username,email,password} = req.body; 
+        let {email,password} = req.body; 
         const users = await clientServices.getAllClients();
         for(i = 0 ; i < users.length; i++){
             if(username === users[i].username || email === users[i].email){
