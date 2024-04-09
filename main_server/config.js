@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
-const path = require("path");
+
+const session = require("express-session");
 // routers :
 const AuthRouter = require("./routes/authRoutes.js");
 const MySpaceRouter = require("./routes/mySpaceRoutes.js");
@@ -22,6 +23,13 @@ const setupApp = (app) => {
   app.use(express.static("views"));
   app.use(express.urlencoded({ extended: false }));
   app.use(express.static("public"));
+  app.use(
+    session({
+      secret: "secret",
+      cookie: { maxAge: 300000 },
+      saveUninitialized: false,
+    })
+  );
 };
 const setupRoutes = (app, db) => {
   app.get("/", (req, res) => {

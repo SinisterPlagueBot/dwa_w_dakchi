@@ -12,7 +12,7 @@
   </head>
   <body>
     <%- include('../navbar/navbar.ejs') %>
-
+  
     <!-- Add a search bar -->
     <div class="container">
       <form id="searchform" action="/medics" method="post">
@@ -38,8 +38,8 @@ $(document).ready(function(){
       <div class="medics">
       <div class="medics-container">
         <% if (results) { var resultsArray = Array.isArray(results) ? results :
-        [results]; resultsArray.forEach(function(result) { %> <%-
-        include('medicCard.ejs', { data: result.data, imageUrl: result.imageUrl
+        [results]; resultsArray.forEach(function(result,index) { %> <%-
+        include('medicCard.ejs', { data: result.data, imageUrl: result.imageUrl,num:index+1
         }) %> <% }); %> <% } else { %>
 
         <p>No data available</p>

@@ -6,6 +6,10 @@ const { MedicamentModel } = require("../models/medicModel"); // Assuming you hav
 // GET route
 router.get("/", async (req, res) => {
   try {
+    if (!req.session.authenticated) {
+      res.redirect("/auth/signin");
+      return;
+    }
     // Fetch the medications from the database
     const defaultMedics = await MedicamentModel.find();
 

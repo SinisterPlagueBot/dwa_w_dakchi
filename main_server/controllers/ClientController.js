@@ -1,19 +1,21 @@
-const clientServices = require("../services/clientServices");
 const { ClientModel } = require("../models/Client");
-const getUsers = async (req, res) => {
+const signup = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Fetch all clients (users) from the database
-    const users = await ClientModel.find();
-
-    // Check if any user matches the provided credentials
-    const authorizedUser = users.find((user) => {
-      return user.email === email && user.password === password;
+    const authorizedUser = await ClientModel.findOne({
+      email: email,
+      password: password,
     });
 
     if (authorizedUser) {
       // User authenticated successfully
+      req.session.authenticated = true;
+      req.session.user = {
+        username: authorizedUser.username,
+        email: email,
+        password: password,
+      };
       res.redirect("/medics");
     } else {
       // Unauthorized: Incorrect credentials
@@ -26,28 +28,34 @@ const getUsers = async (req, res) => {
 };
 
 const registerUser = async (req, res) => {
+  const { username, email, password } = req.body;
+
   try {
-    let authorized = true;
-    let { username, email, password } = req.body;
-    const users = await clientServices.getAllClients();
-    for (i = 0; i < users.length; i++) {
-      if (username === users[i].username || email === users[i].email) {
-        authorized = false;
-        break;
-      }
+    // Check if user already exists
+    const existingUser = await ClientModel.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({ error: "Username already taken" });
     }
-    if (authorized) {
-      clientServices.addClient(username, email, password);
-      res.status(200).render("index");
-    } else {
-      res.status(500).json("The userName or the email is already used");
-    }
+
+    // Hash the password
+
+    // Create new user
+    const user = new ClientModel({
+      username: username,
+      password: password,
+      email: email,
+    });
+    await user.save();
+
+    // Send success response
+    res.status(200).json({ message: "User registered successfully" });
   } catch (err) {
-    res.status(500).json("something went wrong");
+    console.error("Error in /signup:", err);
+    res.status(500).json({ error: "Something went wrong" });
   }
 };
 
 module.exports = {
   registerUser,
-  getUsers,
+  signup,
 };

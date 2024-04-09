@@ -28,6 +28,42 @@
   .medication-info strong {
     font-weight: bold;
   }
+  .prescription {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  .add-button {
+    background-color: #1ca545;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .add-button:hover {
+    background-color: #6dc474;
+  }
+  .confirm-button {
+    display: none;
+    background-color: #1c5ca5;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .confirm-button:hover {
+    background-color: #6d77c4;
+  }
 </style>
 
 <div class="medication-info">
@@ -49,4 +85,44 @@
       <!-- Add more fields as needed -->
     </li>
   </ul>
+  <button class="add-button" id="add-button-<%= num %>">add</button>
+  <input
+    class="prescription"
+    id="prescription-<%= num %>"
+    placeholder="prescription name"
+    required
+  />
+  <button class="confirm-button" id="confirm-button-<%= num %>">confirm</button>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#add-button-<%= num %>").click(function () {
+      //hide others
+      $(".prescription").not("#prescription-<%= num %>").hide();
+      $(".confirm-button").not("#confirm-button-<%= num %>").hide();
+      // show the button and input with a certain num
+      $("#prescription-<%= num %>").toggle();
+      $("#confirm-button-<%= num %>").toggle();
+    });
+    $("#confirm-button-<%= num %>").click(function () {
+      var prescriptionName = $("#prescription-<%= num %>").val();
+      $.ajax({
+        url: "/mySpace/addmedic",
+        type: "POST",
+        data: JSON.stringify({
+          medic: "<%= data.generic_name %>",
+          prescription: prescriptionName,
+        }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+          console.log(data);
+        },
+        error: function (error) {
+          console.error("Error:", error);
+        },
+      });
+    });
+  });
+</script>
