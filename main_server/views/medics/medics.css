@@ -4,6 +4,7 @@ html {
 }
 body {
   display: flex;
+  flex-direction: column;
   margin: 0;
   min-width: 100vw;
   height: 100%;
@@ -46,7 +47,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   padding-left: 2rem;
-  width: 100%;
+  width: 60%;
   min-width: calc(100vw - 22.5rem);
 }
 
@@ -69,10 +70,13 @@ body {
   width: 5rem;
 }
 .medics {
+  position: absolute;
   background-color: #1ca545;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 100%;
-  width: 100%;
+  /* min-width: 100%; */
+  left: 40rem;
+  top: 25rem;
+  width: calc(100% - 40rem);
 }
