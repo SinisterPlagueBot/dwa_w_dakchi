@@ -6,15 +6,10 @@ const getUsers = async (req, res) => {
         const {email, password} = req.body;
 
         // Fetch all clients (users) from the database
-        const users = await clientServices.getAllClients();
+        const users = await clientServices.getAllClients({"email":email});
 
-        // Check if any user matches the provided credentials
-
-        const authorizedUser = false;
-        
-        for(i = 0 ; i < users.length ;i++){
-            if(users[i].email === email){
-                bcrypt.compare(password,users[i].password,(err,result) => {
+        // Check if any user matches the provided credentials        
+        bcrypt.compare(password,users.password,(err,result) => {
                     if(err){
                         res.status(500).json({error:"Something went wrong !"});
                     }
@@ -24,9 +19,7 @@ const getUsers = async (req, res) => {
                     else{
                         res.status(500).json({error:"Mot de passe incorrect."})
                     }
-                })
-            }
-        }
+    });
     } catch (err) {
         console.error("Error in getUsers:", err);
         res.status(500).json({ error: "Something went wrong" });
