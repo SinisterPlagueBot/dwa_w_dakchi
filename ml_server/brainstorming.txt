@@ -1,0 +1,1 @@
+-the disease and symptomes dataset: may be used with svm since the number of features is relatively large compared to the number of data points

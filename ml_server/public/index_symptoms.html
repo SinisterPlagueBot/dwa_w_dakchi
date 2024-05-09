@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>COVID-19 Symptoms Form</title>
+  </head>
+  <body>
+    <form action="/submit_covid" method="post">
+      <h1>COVID-19 Symptoms Form</h1>
+      <div>
+        <label for="breathingProblem">Breathing Problem:</label><br />
+        <input
+          type="radio"
+          id="breathingProblem-yes"
+          name="Breathing Problem"
+          value="Yes"
+        />
+        <label for="breathingProblem-yes">Yes</label><br />
+        <input
+          type="radio"
+          id="breathingProblem-no"
+          name="Breathing Problem"
+          value="No"
+        />
+        <label for="breathingProblem-no">No</label><br />
+      </div>
+      <div>
+        <label for="fever">Fever:</label><br />
+        <input type="radio" id="fever-yes" name="Fever" value="Yes" />
+        <label for="fever-yes">Yes</label><br />
+        <input type="radio" id="fever-no" name="Fever" value="No" />
+        <label for="fever-no">No</label><br />
+      </div>
+      <div>
+        <label for="dryCough">Dry Cough:</label><br />
+        <input type="radio" id="dryCough-yes" name="Dry Cough" value="Yes" />
+        <label for="dryCough-yes">Yes</label><br />
+        <input type="radio" id="dryCough-no" name="Dry Cough" value="No" />
+        <label for="dryCough-no">No</label><br />
+      </div>
+      <!-- Add the rest of the symptoms here -->
+      <div>
+        <label for="soreThroat">Sore throat:</label><br />
+        <input
+          type="radio"
+          id="soreThroat-yes"
+          name="Sore throat"
+          value="Yes"
+        />
+        <label for="soreThroat-yes">Yes</label><br />
+        <input type="radio" id="soreThroat-no" name="Sore throat" value="No" />
+        <label for="soreThroat-no">No</label><br />
+      </div>
+
+      <div>
+        <label for="hyperTension">Hyper Tension:</label><br />
+        <input
+          type="radio"
+          id="hyperTension-yes"
+          name="Hyper Tension"
+          value="Yes"
+        />
+        <label for="hyperTension-yes">Yes</label><br />
+        <input
+          type="radio"
+          id="hyperTension-no"
+          name="Hyper Tension"
+          value="No"
+        />
+        <label for="hyperTension-no">No</label><br />
+      </div>
+      <div>
+        <label for="abroadtravel">Liver Disease:</label><br />
+        <input
+          type="radio"
+          id="abroadtravel-yes"
+          name="Abroad travel"
+          value="Yes"
+        />
+        <label for="abroadtravel-yes">Yes</label><br />
+        <input
+          type="radio"
+          id="abroadtravel-no"
+          name="Abroad travel"
+          value="No"
+        />
+        <label for="abroadtravel-no">No</label><br />
+      </div>
+      <div>
+        <label for="contactWithCovidPatient">Contact with COVID Patient:</label
+        ><br />
+        <input
+          type="radio"
+          id="contactWithCovidPatient-yes"
+          name="Contact with COVID Patient"
+          value="Yes"
+        />
+        <label for="contactWithCovidPatient-yes">Yes</label><br />
+        <input
+          type="radio"
+          id="contactWithCovidPatient-no"
+          name="Contact with COVID Patient"
+          value="No"
+        />
+        <label for="contactWithCovidPatient-no">No</label><br />
+      </div>
+      <div>
+        <label for="attendedLargeGathering">Attended Large Gathering:</label
+        ><br />
+        <input
+          type="radio"
+          id="attendedLargeGathering-yes"
+          name="Attended Large Gathering"
+          value="Yes"
+        />
+        <label for="attendedLargeGathering-yes">Yes</label><br />
+        <input
+          type="radio"
+          id="attendedLargeGathering-no"
+          name="Attended Large Gathering"
+          value="No"
+        />
+        <label for="attendedLargeGathering-no">No</label><br />
+      </div>
+      <div>
+        <label for="visitedPublicExposedPlaces"
+          >Visited Public Exposed Places:</label
+        ><br />
+        <input
+          type="radio"
+          id="visitedPublicExposedPlaces-yes"
+          name="Visited Public Exposed Places"
+          value="Yes"
+        />
+        <label for="visitedPublicExposedPlaces-yes">Yes</label><br />
+        <input
+          type="radio"
+          id="visitedPublicExposedPlaces-no"
+          name="Visited Public Exposed Places"
+          value="No"
+        />
+        <label for="visitedPublicExposedPlaces-no">No</label><br />
+      </div>
+      <div>
+        <label for="familyWorkingInPublicExposedPlaces"
+          >Family working in Public Exposed Places:</label
+        ><br />
+        <input
+          type="radio"
+          id="familyWorkingInPublicExposedPlaces-yes"
+          name="Family working in Public Exposed Places"
+          value="Yes"
+        />
+        <label for="familyWorkingInPublicExposedPlaces-yes">Yes</label><br />
+        <input
+          type="radio"
+          id="familyWorkingInPublicExposedPlaces-no"
+          name="Family working in Public Exposed Places"
+          value="No"
+        />
+        <label for="familyWorkingInPublicExposedPlaces-no">No</label><br />
+      </div>
+      <div>
+        <label for="wearingMasks">Wearing Masks:</label><br />
+        <input
+          type="radio"
+          id="wearingMasks-yes"
+          name="Wearing Masks"
+          value="Yes"
+        />
+        <label for="wearingMasks-yes">Yes</label><br />
+        <input
+          type="radio"
+          id="wearingMasks-no"
+          name="Wearing Masks"
+          value="No"
+        />
+        <label for="wearingMasks-no">No</label><br />
+      </div>
+      <div>
+        <label for="sanitizationFromMarket">Sanitization from Market:</label
+        ><br />
+        <input
+          type="radio"
+          id="sanitizationFromMarket-yes"
+          name="Sanitization from Market"
+          value="Yes"
+        />
+        <label for="sanitizationFromMarket-yes">Yes</label><br />
+        <input
+          type="radio"
+          id="sanitizationFromMarket-no"
+          name="Sanitization from Market"
+          value="No"
+        />
+        <label for="sanitizationFromMarket-no">No</label><br />
+      </div>
+
+      <!-- Repeat the above block for each symptom -->
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
